@@ -1,0 +1,220 @@
+/*basic reset*/
+* {margin: 0; padding: 0;}
+/*forcing the body to take 100% height*/
+html, body {min-height: 100%;}
+/*a nice BG*/
+body {
+  font-size: 1.8rem;
+	background: url("https://gtkslg-dm2305.files.1drv.com/y4mdZHJHNl_Qw5bA-3vKnQGAxcjQiOhwIC0BwGwKWoQ2AFZtV_7Pi5hEpgTEwPFcn3efHW8Lb5WvKJHJYbTuCoaSQVVhe74x8pnqMok5c8NaEpSfZavXw_Uo7Z7B0NJgpi5kxaOHsqSATbaaDH0-945flFwGQxKo_O3YbckfwQoi55ymoh4Y3gIySizfm7bE2Qdkv7EC5ievXsY1zh7ANuLLw?width=1920&height=1080&cropmode=none");
+}
+
+.navbar {
+    -webkit-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+.navbar-default {
+    font-family: 'Aclonica';
+    background-color: #5DBCD2;
+    border: none;
+    font-weight: bold;
+    line-height: 5em;
+		letter-spacing: 0.09em;  
+}
+.navbar-default .navbar-brand {
+    color: black;
+}
+
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: #5DBCD2;
+    background: black;
+}
+
+.navbar-default .navbar-nav>.active>a, 
+.navbar-default .navbar-nav>.active>a:focus, 
+.navbar-default .navbar-nav>.active>a:hover {
+  color: #5DBCD2;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: black;
+}
+
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav>li>a:focus {
+    color: #5DBCD2;
+    background: black;
+}
+
+.navbar-default .navbar-toggle {
+    border: none;
+}
+
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+    background-color: 	#fff;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    color: #5DBCD2;
+    background: black;
+}
+
+.navbar-default .navbar-toggle {
+    border: none;
+    padding: 10px 10px 10px 10px;
+}
+
+@media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a {
+        color: rgba(174, 117, 159, 1);
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover,
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a:focus {
+        color: rgba(174, 117, 159, 1);
+    }
+}
+
+.navbar-brand {
+ font-family: Black Ops One;
+ font-size: 1.8em;
+}
+
+.rwd-line { 
+    display: block; 
+}
+
+ @media screen and (min-width: 768px){
+   .rwd-line { display: inline; }
+}
+
+h1 {
+  color: white;
+  margin-top: 0;
+  font-size: 3em;
+  font-weight: normal;
+  font-family: Black Ops One, 'Aclonica'; 
+  display: inline-block;
+}
+
+p {
+  color: white;
+  font-size: 1.25em;    
+  padding: 4px 0 2px 8px;
+  line-height: 1.7;
+  list-style: none;
+  margin: 0;
+  text-align: center;
+}
+
+hr {
+  border-bottom: solid 8px  #5DBCD2;
+}
+
+.embed-head {
+  padding-top: 15%;
+}
+
+/*Thumbnail Background*/
+.thumb {
+	width: 600px; height: 400px; margin: 70px auto;
+	perspective: 1000px;
+}
+.thumb a {
+	display: block; width: 100%; height: 100%;
+	/*double layered BG for lighting effect*/
+	background: 
+		linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("https://s-media-cache-ak0.pinimg.com/originals/f2/b5/5f/f2b55fbd046ad61b82d68933d206dcea.gif") center center;
+	/*disabling the translucent black bg on the main image*/
+	background-size: 0, cover;
+	/*3d space for children*/
+	transform-style: preserve-3d;
+	transition: all 0.5s;
+}
+.thumb:hover a {transform: rotateX(80deg); transform-origin: bottom;}
+/*bottom surface */
+.thumb a:after {
+	/*36px high element positioned at the bottom of the image*/
+	content: ''; position: absolute; left: 0; bottom: 0; 
+	width: 100%; height: 36px;
+	/*inherit the main BG*/
+	background: inherit; background-size: cover, cover;
+	/*draw the BG bottom up*/
+	background-position: bottom;
+	/*rotate the surface 90deg on the bottom axis*/
+	transform: rotateX(90deg); transform-origin: bottom;
+}
+/*label style*/
+.thumb a span {
+	color: white; text-transform: uppercase;
+	position: absolute; top: 100%; left: 0; width: 100%;
+	font: bold 12px/36px Montserrat; text-align: center;
+	/*the rotation is a bit less than the bottom surface to avoid flickering*/
+	transform: rotateX(-89.99deg); transform-origin: top;
+	z-index: 1;
+}
+/*shadow*/
+.thumb a:before {
+	content: ''; position: absolute; top: 0; left: 0;
+	width: 100%; height: 100%;
+	background: rgba(0, 0, 0, 0.5); 
+	box-shadow: 0 0 100px 50px rgba(0, 0, 0, 0.5);
+	transition: all 0.5s; 
+	/*by default the shadow will be almost flat, very transparent, scaled down with a large blur*/
+	opacity: 0.15;
+	transform: rotateX(95deg) translateZ(-80px) scale(0.75);
+	transform-origin: bottom;
+}
+.thumb:hover a:before {
+	opacity: 1;
+	/*blurred effect using box shadow as filter: blur is not supported in all browsers*/
+	box-shadow: 0 0 25px 25px rgba(0, 0, 0, 0.5);
+	/*pushing the shadow down and scaling it down to size*/
+	transform: rotateX(0) translateZ(-60px) scale(0.85);
+}
+.circle{
+	border-radius: 50%;
+	margin: 0.15em;
+	font-size: 1em;
+  padding: 0.3em 0.3em;
+	}
+
+	#footer {
+		padding: 2em 0 1em 0 ;
+    background: #5DBCD2;
+		text-align: center;
+	}
+
+		#footer .icons {
+			font-size: 1.25em;      
+		}
+
+			#footer .icons a {
+				color: black;
+			}
+
+				#footer .icons a:hover {
+					color: #5DBCD2;
+          background: black;
+				}
+        
+        #footer .icons li {
+          float: center;
+          position: relative;
+          display: inline-block;
+          font-size: 1.25em;
+        }
+
+		#footer .copyright {
+			float: center;
+      color: Black;
+      font-family: Black Ops One;
+			font-size: 1.25em;
+			letter-spacing: 0.2em;
+			list-style: none;
+			padding: 0;
+			text-transform: uppercase;
+		}
